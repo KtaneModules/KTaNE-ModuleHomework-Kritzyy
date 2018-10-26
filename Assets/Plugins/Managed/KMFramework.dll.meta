@@ -1,0 +1,36 @@
+fileFormatVersion: 2
+guid: 45b809be76fd7a3468b6f517bced6f28
+timeCreated: 1535997242
+licenseType: Free
+PluginImporter:
+  serializedVersion: 2
+  iconMap:
+    KMWidget: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000,
+      type: 0}
+  executionOrder: {}
+  isPreloaded: 0
+  isOverridable: 0
+  platformData:
+    data:
+      first:
+        Any: 
+      second:
+        enabled: 1
+        settings: {}
+    data:
+      first:
+        Editor: Editor
+      second:
+        enabled: 0
+        settings:
+          DefaultValueInitialized: true
+    data:
+      first:
+        Windows Store Apps: WindowsStoreApps
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

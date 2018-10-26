@@ -1,0 +1,29 @@
+------------------------
+Edgework
+------------------------
+Serial:
+Indic :
+Ports :
+------------------------
+
+Answer (If needed):
+
+------------------------
+Module Info
+------------------------
+BaseNr:
+School:
+------------------------
+
+------------------------
+Rules
+------------------------
+School in Serial (+3)?: 
+Student in Indicator (+2)?: 
+Parallel port(+2)?: 
+FRK NSA Indicator (+2)?: 
+Vowel in Serial (+5)?: 
+2+ D Batteries (+2)?: 
+
+BOB (Reset)? 
+------------------------

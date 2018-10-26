@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -548183353, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
+  m_Name: KLaNEFinalExam
+  m_EditorClassIdentifier: 
+  DisplayName: Final Exam
+  Description: You've made it to the final exam! 6 pieces of homework while keeping
+    track of a needy and 4 regular modules (Either vanilla or modded if installed)
+    within 5 minutes. Watch out, one error and it's all over. Good luck.w
+  GeneratorSetting:
+    TimeLimit: 300
+    NumStrikes: 1
+    TimeBeforeNeedyActivation: 90
+    FrontFaceOnly: 0
+    OptionalWidgetCount: 5
+    ComponentPools:
+    - Count: 6
+      AllowedSources: 2
+      ComponentTypes: 
+      SpecialComponentType: 0
+      ModTypes:
+      - KritHomework
+    - Count: 1
+      AllowedSources: 3
+      ComponentTypes: 
+      SpecialComponentType: 2
+      ModTypes: []
+    - Count: 4
+      AllowedSources: 3
+      ComponentTypes: 
+      SpecialComponentType: 1
+      ModTypes: []
+  PacingEventsEnabled: 0
