@@ -10,14 +10,25 @@ public class KritHomework : MonoBehaviour
     public KMSelectable button2;
     public KMSelectable button3;
     public KMSelectable button4;
+    public KMSelectable Pencil;
+
+    public GameObject button1Obj;
+    public GameObject button2Obj;
+    public GameObject button3Obj;
+    public GameObject button4Obj;
+    public GameObject Grade;
+    public GameObject AnswerText;
+
     public TextMesh Intro;
     public TextMesh question1;
     public TextMesh question2;
     public TextMesh question3;
     public TextMesh question4;
+
     public MeshRenderer Solve1;
-    public KMSelectable Pencil;
+
     public Transform Hands;
+
     public MeshRenderer Clock;
     public MeshRenderer LED1;
     public MeshRenderer LED2;
@@ -115,42 +126,48 @@ public class KritHomework : MonoBehaviour
         correctLibrary = 0;
         Library = 0;
         correctIndex = 0;
+        ButtonAns = 0;
 
-        correctLibrary = UnityEngine.Random.Range(1, 8);
-        if (correctLibrary == 1)
+        correctLibrary = UnityEngine.Random.Range(0, 8);
+        if (correctLibrary == 0)
         {
             Library = 1;
             correctIndex = UnityEngine.Random.Range(0, 4);
         }
-        if (correctLibrary == 2)
+        else if (correctLibrary == 1)
         {
             Library = 2;
             correctIndex = UnityEngine.Random.Range(0, 4);
         }
-        if (correctLibrary == 3)
+        else if (correctLibrary == 2)
         {
             Library = 3;
             correctIndex = UnityEngine.Random.Range(0, 4);
         }
-        if (correctLibrary == 4)
+        else if (correctLibrary == 3)
         {
             Library = 4;
             correctIndex = UnityEngine.Random.Range(0, 4);
         }
-        if (correctLibrary == 5)
+        else if (correctLibrary == 4)
         {
             Library = 5;
             correctIndex = UnityEngine.Random.Range(0, 4);
         }
-        if (correctLibrary == 6)
+        else if (correctLibrary == 5)
         {
             Library = 6;
             correctIndex = UnityEngine.Random.Range(0, 4);
         }
-        if (correctLibrary == 7)
+        else if (correctLibrary == 6)
         {
             Library = 7;
-            correctIndex = 0;
+            correctIndex = UnityEngine.Random.Range(0, 4);
+        }
+        else if (correctLibrary == 7)
+        {
+            Library = 8;
+            correctIndex = UnityEngine.Random.Range(0, 3);
         }
         //Who's On First
         if (correctIndex == 0 && Library == 1)
@@ -273,7 +290,6 @@ public class KritHomework : MonoBehaviour
             question3.text = "'51' in Two Bits?";
             ButtonAns = 2;
         }
-
         //Semaphore
         else if (correctIndex == 0 && Library == 4)
         {
@@ -412,8 +428,93 @@ public class KritHomework : MonoBehaviour
             ButtonAns = 2;
         }
 
+        //If any of these...
+        if (ButtonAns > 0)
+        {
+            Debug.LogFormat("[Module Homework #{0}] Library: {1}, Index: {2}", moduleId, Library, correctIndex);
+            Calculation();
+        }
+        //If none of these...
+        else
+        {
+            Debug.LogFormat("[Module Homework #{0}] Attempting row 2...", moduleId);
+            InitNext();
+        }
+    }
+
+    void InitNext()
+    {
+        //Blackjack
+        if (correctIndex == 1 && Library == 7)
+        {
+            Debug.LogFormat("[Module Homework #{0}] The question of this module is 'Blackjack'", moduleId);
+            Debug.LogFormat("[Module Homework #{0}] Its answer would be Answer 1: A JACK OF DIAMONS", moduleId);
+            question1.text = "Which of these";
+            question2.text = "is not a starting";
+            question3.text = "card in Blackjack?";
+            ButtonAns = 1;
+        }
+        //British Slang
+        else if (correctIndex == 2 && Library == 7)
+        {
+            Debug.LogFormat("[Module Homework #{0}] The question of this module is 'British Slang'", moduleId);
+            Debug.LogFormat("[Module Homework #{0}] Its answer would be Answer 3: PISH POSH", moduleId);
+            question1.text = "Which of these";
+            question2.text = "is not a";
+            question3.text = "British Slang?";
+            ButtonAns = 3;
+        }
+        //Periodic Table
+        else if (correctIndex == 3 && Library == 7)
+        {
+            Debug.LogFormat("[Module Homework #{0}] The question of this module is 'Periodic Table'", moduleId);
+            Debug.LogFormat("[Module Homework #{0}] Its answer would be Answer 4: Tr", moduleId);
+            question1.text = "Which of these";
+            question2.text = "is not a correct";
+            question3.text = "Symbol in the";
+            question4.text = "Periodic Table?";
+            ButtonAns = 4;
+        }
+        //T-words
+        else if (correctIndex == 0 && Library == 8)
+        {
+            Debug.LogFormat("[Module Homework #{0}] The question of this module is 'T-words'", moduleId);
+            Debug.LogFormat("[Module Homework #{0}] Its answer would be Answer 2: TACHEOMETER", moduleId);
+            question1.text = "Which of these";
+            question2.text = "is not an existing";
+            question3.text = "word in the";
+            question4.text = "T-words module?";
+            ButtonAns = 2;
+        }
+        //Snooker
+        else if (correctIndex == 1 && Library == 8)
+        {
+            Debug.LogFormat("[Module Homework #{0}] The question of this module is 'Snooker'", moduleId);
+            Debug.LogFormat("[Module Homework #{0}] Its answer would be Answer 1: 1 POINT", moduleId);
+            question1.text = "What is the value";
+            question2.text = "of the red ball";
+            question3.text = "in Snooker?";
+            ButtonAns = 1;
+        }
+        //Benedict Cumberbatch
+        else if (correctIndex == 2 && Library == 8)
+        {
+            Debug.LogFormat("[Module Homework #{0}] The question of this module is 'Benedict Cumberbatch'", moduleId);
+            Debug.LogFormat("[Module Homework #{0}] Its answer would be Answer 3: BUTT", moduleId);
+            question1.text = "Which of these";
+            question2.text = "Forenames is";
+            question3.text = "also a surname";
+            question4.text = "in Benedict?";
+            ButtonAns = 1;
+        }
+        Calculation();
+    }
+
+    void Calculation()
+    {
         //Answer Calculation...
-        int Homework = BombInfo.GetSerialNumberNumbers().First();
+        int Homework = 0;
+        Homework = BombInfo.GetSerialNumberNumbers().First();
         string Indic = string.Join("", BombInfo.GetIndicators().ToArray());
         if (BombInfo.GetSerialNumberLetters().Any("SCHOOL".Contains))
         {
@@ -456,6 +557,7 @@ public class KritHomework : MonoBehaviour
         if (Homework <= 6)
         {
             Debug.LogFormat("[Module Homework #{0}] The homework is from Elementary School", moduleId);
+            LogAnswer();
             return;
         }
         else if (Homework >= 7 && Homework <= 12)
@@ -482,14 +584,34 @@ public class KritHomework : MonoBehaviour
         if (ButtonAns > 4)
         {
             ButtonAns = ButtonAns - 4;
+            AnswerCheck();
         }
-        LogAnswer();
+        else
+        {
+            LogAnswer();
+        }
     }
 
     void LogAnswer()
     {
         Debug.LogFormat("[Module Homework #{0}] The button that must be pressed is {1}", moduleId, ButtonAns);
         Debug.LogFormat("[Module Homework #{0}] -----------------------------------------------------------------------------", moduleId);
+    }
+
+    void Solve()
+    {
+        Intro.text = "Grade:";
+        question1.text = "";
+        question2.text = "";
+        question3.text = "";
+        question4.text = "";
+        GetComponent<KMBombModule>().HandlePass();
+        button1Obj.SetActive(false);
+        button2Obj.SetActive(false);
+        button3Obj.SetActive(false);
+        button4Obj.SetActive(false);
+        AnswerText.SetActive(false);
+        Grade.SetActive(true);
     }
 
     //The actual time limit. (1 minutes)
@@ -542,8 +664,7 @@ public class KritHomework : MonoBehaviour
         {
             Solve1.material.color = new Color32(124, 252, 0, 1);
             LED1.material.color = new Color32(0, 255, 0, 1);
-            Active = false;
-            GetComponent<KMBombModule>().HandlePass();
+            Solve();
         }
         else if (lessonStart == 0)
         {
@@ -552,11 +673,13 @@ public class KritHomework : MonoBehaviour
         }
         else
         {
+            Debug.LogFormat("[Module Homework #{0}] Incorrect button! Strike handed.", moduleId);
+            GetComponent<KMBombModule>().HandleStrike();
+            Hands.transform.localRotation = new Quaternion(0, 0, 0, 0);
+            Init();
             StartCoroutine("Countdown");
             Solve1.material.color = new Color32(255, 0, 0, 1);
             LED1.material.color = new Color32(255, 0, 0, 1);
-            GetComponent<KMBombModule>().HandleStrike();
-            Debug.LogFormat("[Module Homework #{0}] Incorrect button! Strike handed.", moduleId);
         }
         Audio.PlaySoundAtTransform("PencilDrawing", transform);
         return false;
@@ -570,9 +693,8 @@ public class KritHomework : MonoBehaviour
         if (ButtonAns == 2 && lessonStart == 1)
         {
             Solve1.material.color = new Color32(124, 252, 0, 1);
-            GetComponent<KMBombModule>().HandlePass();
-            Active = false;
             LED2.material.color = new Color32(0, 255, 0, 1);
+            Solve();
         }
         else if (lessonStart == 0)
         {
@@ -581,11 +703,13 @@ public class KritHomework : MonoBehaviour
         }
         else
         {
+            Debug.LogFormat("[Module Homework #{0}] Incorrect button! Strike handed.", moduleId);
+            GetComponent<KMBombModule>().HandleStrike();
+            Init();
             StartCoroutine("Countdown");
             Solve1.material.color = new Color32(255, 0, 0, 1);
             LED2.material.color = new Color32(255, 0, 0, 1);
-            GetComponent<KMBombModule>().HandleStrike();
-            Debug.LogFormat("[Module Homework #{0}] Incorrect button! Strike handed.", moduleId);
+            Hands.transform.localRotation = new Quaternion(0, 0, 0, 0);
         }
         Audio.PlaySoundAtTransform("PencilDrawing", transform);
         return false;
@@ -599,9 +723,8 @@ public class KritHomework : MonoBehaviour
         if (ButtonAns == 3 && lessonStart == 1)
         {
             Solve1.material.color = new Color32(124, 252, 0, 1);
-            GetComponent<KMBombModule>().HandlePass();
-            Active = false;
             LED3.material.color = new Color32(0, 255, 0, 1);
+            Solve();
         }
         else if (lessonStart == 0)
         {
@@ -610,11 +733,13 @@ public class KritHomework : MonoBehaviour
         }
         else
         {
+            Debug.LogFormat("[Module Homework #{0}] Incorrect button! Strike handed.", moduleId);
+            GetComponent<KMBombModule>().HandleStrike();
+            Hands.transform.localRotation = new Quaternion(0, 0, 0, 0);
+            Init();
             StartCoroutine("Countdown");
             Solve1.material.color = new Color32(255, 0, 0, 1);
             LED3.material.color = new Color32(255, 0, 0, 1);
-            GetComponent<KMBombModule>().HandleStrike();
-            Debug.LogFormat("[Module Homework #{0}] Incorrect button! Strike handed.", moduleId);
         }
         Audio.PlaySoundAtTransform("PencilDrawing", transform);
         return false;
@@ -628,9 +753,8 @@ public class KritHomework : MonoBehaviour
         if (ButtonAns == 4 && lessonStart == 1)
         {
             Solve1.material.color = new Color32(124, 252, 0, 1);
-            GetComponent<KMBombModule>().HandlePass();
-            Active = false;
             LED4.material.color = new Color32(0, 255, 0, 1);
+            Solve();
         }
         else if (lessonStart == 0)
         {
@@ -639,11 +763,13 @@ public class KritHomework : MonoBehaviour
         }
         else
         {
+            Debug.LogFormat("[Module Homework #{0}] Incorrect button! Strike handed.", moduleId);
+            GetComponent<KMBombModule>().HandleStrike();
+            Hands.transform.localRotation = new Quaternion(0, 0, 0, 0);
+            Init();
             StartCoroutine("Countdown");
             Solve1.material.color = new Color32(255, 0, 0, 1);
             LED4.material.color = new Color32(255, 0, 0, 1);
-            GetComponent<KMBombModule>().HandleStrike();
-            Debug.LogFormat("[Module Homework #{0}] Incorrect button! Strike handed.", moduleId);
         }
         Audio.PlaySoundAtTransform("PencilDrawing", transform);
         return false;

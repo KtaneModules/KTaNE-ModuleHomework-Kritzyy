@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 using UnityEngine;
-using UnityEditor;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -921,41 +920,5 @@ public class TestHarness : MonoBehaviour
         DynamicGI.UpdateEnvironment();
 
         testLight.enabled = false;
-    }
-}
-
-public class BombInfoWindow : EditorWindow
-{
-    [MenuItem("Window/Show TestHarness Bomb Info")]
-    public static void ShowWindow()
-    {
-        GetWindow<BombInfoWindow>("Show TestHarness Bomb Info");
-    }
-
-    void OnGUI()
-    {
-        GUILayout.Label("Indicators:", EditorStyles.boldLabel);
-    }
-}
-
-public class NotesWindow : EditorWindow
-{
-    string TextFieldText = "Add notes here";
-
-    [MenuItem("Window/Take Notes")]
-    public static void ShowWindow()
-    {
-        GetWindow<NotesWindow>("Take Notes");
-    }
-
-    void OnGUI()
-    {
-        GUILayout.Label("Notes: ", EditorStyles.boldLabel);
-        TextFieldText = EditorGUILayout.TextField("Add notes:", TextFieldText);
-        if (GUILayout.Button("Add note"))
-        {
-            Debug.LogWarningFormat("Note was added with value: {0}", TextFieldText);
-            GUILayout.Label("Notes: ", EditorStyles.boldLabel);
-        }
     }
 }
