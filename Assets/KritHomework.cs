@@ -2,7 +2,6 @@ using UnityEngine;
 using KModkit;
 using System.Linq;
 using System.Collections;
-using System.Text.RegularExpressions;
 
 public class KritHomework : MonoBehaviour
 {
@@ -16,10 +15,10 @@ public class KritHomework : MonoBehaviour
     public GameObject button2Obj;
     public GameObject button3Obj;
     public GameObject button4Obj;
-    public GameObject Grade;
+    public GameObject GradeA, GradeF;
     public GameObject AnswerText;
 
-    public TextMesh Intro;
+    public TextMesh Intro, AnswersAndGrade;
     public TextMesh question1;
     public TextMesh question2;
     public TextMesh question3;
@@ -90,6 +89,7 @@ public class KritHomework : MonoBehaviour
     int correctIndex;
     int correctLibrary;
     int lessonStart = 0;
+    int buttonPressed;
 
     private readonly string TwitchHelpMessage = "Type '!{0} start' to start the lesson. Type '!{0} press 1' (Or 'press button1') to answer with Answer 1.";
 
@@ -117,6 +117,7 @@ public class KritHomework : MonoBehaviour
         Bell.PlaySoundAtTransform("Bell", transform);
         lessonStart = 1;
         Intro.text = "Question:";
+        AnswersAndGrade.text = "Answers:";
         question1.text = "";
         question2.text = "";
         question3.text = "";
@@ -127,6 +128,18 @@ public class KritHomework : MonoBehaviour
         Library = 0;
         correctIndex = 0;
         ButtonAns = 0;
+
+        button1Obj.SetActive(true);
+        button2Obj.SetActive(true);
+        button3Obj.SetActive(true);
+        button4Obj.SetActive(true);
+        AnswerText.SetActive(true);
+        GradeF.SetActive(false);
+
+        LED1.material.color = new Color32(128, 128, 128, 1);
+        LED2.material.color = new Color32(128, 128, 128, 1);
+        LED3.material.color = new Color32(128, 128, 128, 1);
+        LED4.material.color = new Color32(128, 128, 128, 1);
 
         correctLibrary = UnityEngine.Random.Range(0, 8);
         if (correctLibrary == 0)
@@ -611,7 +624,7 @@ public class KritHomework : MonoBehaviour
         button3Obj.SetActive(false);
         button4Obj.SetActive(false);
         AnswerText.SetActive(false);
-        Grade.SetActive(true);
+        GradeA.SetActive(true);
     }
 
     //The actual time limit. (1 minutes)
@@ -635,13 +648,30 @@ public class KritHomework : MonoBehaviour
         }
     }
 
+    void Incorrect()
+    {
+        Intro.text = "Result:";
+        question1.text = "Answer " + buttonPressed + " was";
+        question2.text = "incorrect. Try again";
+        question3.text = "using the pencil.";
+        question4.text = "(Correct answer was " + ButtonAns +")";
+
+        button1Obj.SetActive(false);
+        button2Obj.SetActive(false);
+        button3Obj.SetActive(false);
+        button4Obj.SetActive(false);
+        GradeF.SetActive(true);
+        AnswersAndGrade.text = "Grade:";
+
+        lessonStart = 0;
+    }
+
     protected bool StartLesson()
     {
         GetComponent<KMSelectable>().AddInteractionPunch();
         if (lessonStart == 0)
         {
             StartCoroutine("Countdown");
-            Pencil.OnInteract = Empty;
             Active = true;
             Debug.LogFormat("[Module Homework #{0}] -----------------------------------------------------------------------------", moduleId);
             Debug.LogFormat("[Module Homework #{0}] The lesson has started! Good luck.", moduleId);
@@ -657,6 +687,7 @@ public class KritHomework : MonoBehaviour
 
     protected bool Button1()
     {
+        buttonPressed = 1;
         StopCoroutine("Countdown");
         GetComponent<KMSelectable>().AddInteractionPunch();
         Debug.LogFormat("[Module Homework #{0}] Button pressed: Button 1", moduleId, ButtonAns);
@@ -676,10 +707,10 @@ public class KritHomework : MonoBehaviour
             Debug.LogFormat("[Module Homework #{0}] Incorrect button! Strike handed.", moduleId);
             GetComponent<KMBombModule>().HandleStrike();
             Hands.transform.localRotation = new Quaternion(0, 0, 0, 0);
-            Init();
-            StartCoroutine("Countdown");
             Solve1.material.color = new Color32(255, 0, 0, 1);
             LED1.material.color = new Color32(255, 0, 0, 1);
+            Clock.material.color = new Color32(255, 255, 255, 1);
+            Incorrect();
         }
         Audio.PlaySoundAtTransform("PencilDrawing", transform);
         return false;
@@ -687,6 +718,7 @@ public class KritHomework : MonoBehaviour
 
     protected bool Button2()
     {
+        buttonPressed = 2;
         StopCoroutine("Countdown");
         Debug.LogFormat("[Module Homework #{0}] Button pressed: Button 2", moduleId, ButtonAns);
         GetComponent<KMSelectable>().AddInteractionPunch();
@@ -705,11 +737,11 @@ public class KritHomework : MonoBehaviour
         {
             Debug.LogFormat("[Module Homework #{0}] Incorrect button! Strike handed.", moduleId);
             GetComponent<KMBombModule>().HandleStrike();
-            Init();
-            StartCoroutine("Countdown");
             Solve1.material.color = new Color32(255, 0, 0, 1);
             LED2.material.color = new Color32(255, 0, 0, 1);
+            Clock.material.color = new Color32(255, 255, 255, 1);
             Hands.transform.localRotation = new Quaternion(0, 0, 0, 0);
+            Incorrect();
         }
         Audio.PlaySoundAtTransform("PencilDrawing", transform);
         return false;
@@ -717,6 +749,7 @@ public class KritHomework : MonoBehaviour
 
     protected bool Button3()
     {
+        buttonPressed = 3;
         StopCoroutine("Countdown");
         Debug.LogFormat("[Module Homework #{0}] Button pressed: Button 3", moduleId, ButtonAns);
         GetComponent<KMSelectable>().AddInteractionPunch();
@@ -736,10 +769,10 @@ public class KritHomework : MonoBehaviour
             Debug.LogFormat("[Module Homework #{0}] Incorrect button! Strike handed.", moduleId);
             GetComponent<KMBombModule>().HandleStrike();
             Hands.transform.localRotation = new Quaternion(0, 0, 0, 0);
-            Init();
-            StartCoroutine("Countdown");
             Solve1.material.color = new Color32(255, 0, 0, 1);
             LED3.material.color = new Color32(255, 0, 0, 1);
+            Clock.material.color = new Color32(255, 255, 255, 1);
+            Incorrect();
         }
         Audio.PlaySoundAtTransform("PencilDrawing", transform);
         return false;
@@ -747,6 +780,7 @@ public class KritHomework : MonoBehaviour
 
     protected bool Button4()
     {
+        buttonPressed = 4;
         StopCoroutine("Countdown");
         Debug.LogFormat("[Module Homework #{0}] Button pressed: Button 4", moduleId, ButtonAns);
         GetComponent<KMSelectable>().AddInteractionPunch();
@@ -766,10 +800,10 @@ public class KritHomework : MonoBehaviour
             Debug.LogFormat("[Module Homework #{0}] Incorrect button! Strike handed.", moduleId);
             GetComponent<KMBombModule>().HandleStrike();
             Hands.transform.localRotation = new Quaternion(0, 0, 0, 0);
-            Init();
-            StartCoroutine("Countdown");
             Solve1.material.color = new Color32(255, 0, 0, 1);
             LED4.material.color = new Color32(255, 0, 0, 1);
+            Clock.material.color = new Color32(255, 255, 255, 1);
+            Incorrect();
         }
         Audio.PlaySoundAtTransform("PencilDrawing", transform);
         return false;

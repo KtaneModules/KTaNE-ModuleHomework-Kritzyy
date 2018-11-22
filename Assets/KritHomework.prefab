@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 102056810627365262}
   - component: {fileID: 114537634044046534}
   m_Layer: 0
-  m_Name: Question_Answered (3)
+  m_Name: Question3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 102089405063399832}
   - component: {fileID: 114380027239713182}
   m_Layer: 0
-  m_Name: Question_Answered (2)
+  m_Name: Question2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 102343496943741092}
   - component: {fileID: 114160445200015456}
   m_Layer: 0
-  m_Name: Question_questioned
+  m_Name: QuestionTag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,6 +287,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1253815259980314
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4267637219402550}
+  - component: {fileID: 33480678634326664}
+  - component: {fileID: 64499235021826936}
+  - component: {fileID: 23222321582554420}
+  m_Layer: 0
+  m_Name: GradeA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &1254842041479998
 GameObject:
   m_ObjectHideFlags: 1
@@ -299,7 +317,7 @@ GameObject:
   - component: {fileID: 102982894239198056}
   - component: {fileID: 114415349726720282}
   m_Layer: 0
-  m_Name: Answer_questioned
+  m_Name: Answer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -617,7 +635,7 @@ GameObject:
   - component: {fileID: 102097634847347050}
   - component: {fileID: 114776943231790388}
   m_Layer: 0
-  m_Name: Question_Answered (4)
+  m_Name: Question4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1137,7 +1155,7 @@ GameObject:
   - component: {fileID: 102566667657581292}
   - component: {fileID: 114373825528580892}
   m_Layer: 0
-  m_Name: Question_Answered (1)
+  m_Name: Question1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1312,7 +1330,7 @@ GameObject:
   - component: {fileID: 64603167334915088}
   - component: {fileID: 23221222731004736}
   m_Layer: 0
-  m_Name: Grade
+  m_Name: GradeF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1824,6 +1842,19 @@ Transform:
   m_Father: {fileID: 4557071948777166}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 180, y: -90.01599, z: -180}
+--- !u!4 &4267637219402550
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1253815259980314}
+  m_LocalRotation: {x: -0, y: -0.011612679, z: 0, w: -0.9999326}
+  m_LocalPosition: {x: -0.010776568, y: 0.6330681, z: 0.07067456}
+  m_LocalScale: {x: 0.08903606, y: 1.912273, z: 0.070403814}
+  m_Children: []
+  m_Father: {fileID: 4750523757718426}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4272394380733604
 Transform:
   m_ObjectHideFlags: 1
@@ -1857,11 +1888,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1924862398242188}
   m_LocalRotation: {x: -0, y: -0.011612679, z: 0, w: -0.9999326}
-  m_LocalPosition: {x: -0.010776568, y: 0.6330681, z: 0.07067456}
-  m_LocalScale: {x: 0.08903606, y: 1.912273, z: 0.070403814}
+  m_LocalPosition: {x: -0.003, y: 0.6330681, z: 0.313}
+  m_LocalScale: {x: 0.048103865, y: 1.0331511, z: 0.038037345}
   m_Children: []
   m_Father: {fileID: 4750523757718426}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4320621707454064
 Transform:
@@ -2370,6 +2401,7 @@ Transform:
   - {fileID: 4378344893687878}
   - {fileID: 4243229920636266}
   - {fileID: 4973241112386864}
+  - {fileID: 4267637219402550}
   - {fileID: 4310461326045922}
   m_Father: {fileID: 4166585742875020}
   m_RootOrder: 3
@@ -2952,6 +2984,38 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1924862398242188}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 6144d65ebfac11e4c9be03b542eb3277, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23222321582554420
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1253815259980314}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -4662,6 +4726,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1187084359321874}
   m_Mesh: {fileID: 4300008, guid: 4109be4c1d23f41498bd9dcc52605aa4, type: 3}
+--- !u!33 &33480678634326664
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1253815259980314}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &33494953168215610
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -4823,6 +4894,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1264270341557252}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!64 &64499235021826936
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1253815259980314}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &64603167334915088
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -6468,9 +6553,11 @@ MonoBehaviour:
   button2Obj: {fileID: 1836966923982760}
   button3Obj: {fileID: 1469692469908490}
   button4Obj: {fileID: 1433575976889218}
-  Grade: {fileID: 1924862398242188}
+  GradeA: {fileID: 1253815259980314}
+  GradeF: {fileID: 1924862398242188}
   AnswerText: {fileID: 1254842041479998}
   Intro: {fileID: 102343496943741092}
+  AnswersAndGrade: {fileID: 102982894239198056}
   question1: {fileID: 102566667657581292}
   question2: {fileID: 102089405063399832}
   question3: {fileID: 102056810627365262}
