@@ -461,7 +461,7 @@ public class KritHomework : MonoBehaviour
         if (correctIndex == 1 && Library == 7)
         {
             Debug.LogFormat("[Module Homework #{0}] The question of this module is 'Blackjack'", moduleId);
-            Debug.LogFormat("[Module Homework #{0}] Its answer would be Answer 1: A JACK OF DIAMONS", moduleId);
+            Debug.LogFormat("[Module Homework #{0}] Its answer would be Answer 1: A JACK OF DIAMONDS", moduleId);
             question1.text = "Which of these";
             question2.text = "is not a starting";
             question3.text = "card in Blackjack?";
