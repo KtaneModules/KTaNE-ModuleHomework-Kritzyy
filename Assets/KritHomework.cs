@@ -518,7 +518,7 @@ public class KritHomework : MonoBehaviour
             question2.text = "Forenames is";
             question3.text = "also a surname";
             question4.text = "in Benedict?";
-            ButtonAns = 1;
+            ButtonAns = 3;
         }
         Calculation();
     }
