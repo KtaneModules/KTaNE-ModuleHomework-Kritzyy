@@ -340,7 +340,7 @@ public class KritHomework : MonoBehaviour
         else if (correctIndex == 3 && Library == 4)
         {
             Debug.LogFormat("[Module Homework #{0}] The question of this module is 'Answering Questions'", moduleId);
-            Debug.LogFormat("[Module Homework #{0}] Its answer would be Answer 2: IF YOU HAVE A STRIKE", moduleId);
+            Debug.LogFormat("[Module Homework #{0}] Its answer would be Answer 2: IF YOU HAVE JUST ONE STRIKE", moduleId);
             question1.text = "What does the";
             question2.text = "question 'Strikes?'";
             question3.text = "mean in Answering";
@@ -444,13 +444,11 @@ public class KritHomework : MonoBehaviour
         //If any of these...
         if (ButtonAns > 0)
         {
-            Debug.LogFormat("[Module Homework #{0}] Library: {1}, Index: {2}", moduleId, Library, correctIndex);
             Calculation();
         }
         //If none of these...
         else
         {
-            Debug.LogFormat("[Module Homework #{0}] Attempting row 2...", moduleId);
             InitNext();
         }
     }
